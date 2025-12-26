@@ -12,8 +12,8 @@ export const createReservation = (reservationData) => {
   return api.post("/reservations", reservationData);
 };
 
-export const updateReservation = (id, reservationData) => {  // Fixed parameter name
-  return api.put(`/reservations/${id}`, reservationData);  // Fixed URL
+export const updateReservation = (id, reservationData) => { 
+  return api.put(`/reservations/${id}`, reservationData);  
 };
 
 export const patchReservation = (id, updates) => {
