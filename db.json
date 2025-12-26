@@ -1,0 +1,203 @@
+{
+  "equipment": [
+    {
+      "id": 1,
+      "name": "Dialysis Machine Model 5008",
+      "type": "Dialysis",
+      "status": "available",
+      "location": "Room 101",
+      "department": "Nephrology",
+      "serialNumber": "DM-001-2023",
+      "manufacturer": "Fresenius",
+      "model": "5008",
+      "purchaseDate": "2023-01-15",
+      "lastMaintenance": "2023-12-01",
+      "nextMaintenance": "2024-06-01",
+      "image": "/api/placeholder/400/300",
+      "specifications": {
+        "weight": "200kg",
+        "dimensions": "150x80x60 cm",
+        "power": "110-240V",
+        "features": ["Touch Screen", "WiFi", "Auto Disinfection"]
+      },
+      "utilization": 85,
+      "condition": "excellent",
+      "notes": "Primary dialysis machine"
+    },
+    {
+      "id": 2,
+      "name": "Portable Ultrasound",
+      "type": "Imaging",
+      "status": "in_use",
+      "location": "Room 205",
+      "department": "Radiology",
+      "serialNumber": "US-002-2022",
+      "manufacturer": "GE Healthcare",
+      "model": "Venue Go",
+      "purchaseDate": "2022-05-10",
+      "lastMaintenance": "2024-01-10",
+      "nextMaintenance": "2024-07-10",
+      "image": "/api/placeholder/400/300",
+      "specifications": {
+        "weight": "2.5kg",
+        "dimensions": "30x20x10 cm",
+        "battery": "6 hours",
+        "features": ["Wireless", "Touch Screen", "Doppler"]
+      },
+      "utilization": 92,
+      "condition": "good",
+      "notes": "Portable for emergency use"
+    },
+    {
+      "id": 3,
+      "name": "Ventilator System",
+      "type": "Respiratory",
+      "status": "maintenance",
+      "location": "ICU Room 3",
+      "department": "ICU",
+      "serialNumber": "VT-003-2021",
+      "manufacturer": "Medtronic",
+      "model": "PB980",
+      "purchaseDate": "2021-11-20",
+      "lastMaintenance": "2023-11-15",
+      "nextMaintenance": "2024-05-15",
+      "image": "/api/placeholder/400/300",
+      "specifications": {
+        "weight": "30kg",
+        "dimensions": "60x40x30 cm",
+        "power": "Battery/AC",
+        "features": ["Turbine", "Touch Screen", "Alarms"]
+      },
+      "utilization": 78,
+      "condition": "needs_service",
+      "notes": "Scheduled for filter replacement"
+    }
+  ],
+  "reservations": [
+    {
+      "id": 1,
+      "equipmentId": 1,
+      "userId": 1,
+      "userName": "Dr. Sarah Chen",
+      "department": "Nephrology",
+      "startTime": "2024-01-20T09:00:00Z",
+      "endTime": "2024-01-20T12:00:00Z",
+      "status": "confirmed",
+      "purpose": "Patient treatment - Dialysis session",
+      "notes": "Patient: John Doe, Room 101",
+      "createdAt": "2024-01-18T14:30:00Z",
+      "priority": "high"
+    },
+    {
+      "id": 2,
+      "equipmentId": 2,
+      "userId": 2,
+      "userName": "Dr. Michael Rodriguez",
+      "department": "Emergency",
+      "startTime": "2024-01-21T14:00:00Z",
+      "endTime": "2024-01-21T16:00:00Z",
+      "status": "pending",
+      "purpose": "Emergency abdominal scan",
+      "notes": "Suspected appendicitis case",
+      "createdAt": "2024-01-19T10:15:00Z",
+      "priority": "urgent"
+    }
+  ],
+  "maintenance": [
+    {
+      "id": 1,
+      "equipmentId": 3,
+      "equipmentName": "Ventilator System",
+      "type": "routine",
+      "status": "scheduled",
+      "scheduledDate": "2024-06-01",
+      "dueDate": "2024-06-15",
+      "completedDate": null,
+      "technician": "John Smith",
+      "description": "Regular maintenance and calibration",
+      "notes": "Check filters and sensors",
+      "cost": 450,
+      "parts": ["Filter Set", "Sensor Kit"],
+      "priority": "medium"
+    },
+    {
+      "id": 2,
+      "equipmentId": 1,
+      "equipmentName": "Dialysis Machine Model 5008",
+      "type": "repair",
+      "status": "completed",
+      "scheduledDate": "2023-12-01",
+      "dueDate": "2023-12-02",
+      "completedDate": "2023-12-02",
+      "technician": "Jane Doe",
+      "description": "Blood pump replacement",
+      "notes": "Pump was making unusual noise",
+      "cost": 1200,
+      "parts": ["Blood Pump Assembly"],
+      "priority": "high"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Dr. Sarah Chen",
+      "role": "doctor",
+      "department": "Nephrology",
+      "email": "sarah.chen@renalhospital.com",
+      "phone": "+1-555-0101",
+      "avatar": "/api/placeholder/150/150",
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "name": "Dr. Michael Rodriguez",
+      "role": "doctor",
+      "department": "Emergency",
+      "email": "michael.r@renalhospital.com",
+      "phone": "+1-555-0102",
+      "avatar": "/api/placeholder/150/150",
+      "status": "active"
+    },
+    {
+      "id": 3,
+      "name": "Nurse Jane Wilson",
+      "role": "nurse",
+      "department": "ICU",
+      "email": "jane.w@renalhospital.com",
+      "phone": "+1-555-0103",
+      "avatar": "/api/placeholder/150/150",
+      "status": "active"
+    },
+    {
+      "id": 4,
+      "name": "Admin Alex Johnson",
+      "role": "admin",
+      "department": "Administration",
+      "email": "alex.j@renalhospital.com",
+      "phone": "+1-555-0104",
+      "avatar": "/api/placeholder/150/150",
+      "status": "active"
+    }
+  ],
+  "analytics": {
+    "dailyUsage": [
+      { "date": "2024-01-15", "utilization": 78 },
+      { "date": "2024-01-16", "utilization": 82 },
+      { "date": "2024-01-17", "utilization": 85 },
+      { "date": "2024-01-18", "utilization": 79 },
+      { "date": "2024-01-19", "utilization": 88 }
+    ],
+    "departmentUtilization": [
+      { "department": "Nephrology", "utilization": 92 },
+      { "department": "ICU", "utilization": 88 },
+      { "department": "Emergency", "utilization": 76 },
+      { "department": "Radiology", "utilization": 81 }
+    ],
+    "equipmentStatus": {
+      "available": 15,
+      "in_use": 22,
+      "maintenance": 3,
+      "reserved": 5
+    }
+  }
+}

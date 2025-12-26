@@ -33,7 +33,7 @@ function Sidebar() {
           type="button"
           onClick={() => setToggleMenu(!toggleMenu)}
           className="absolute z-[100] items-center p-2 border border-blue-200/30 dark:border-blue-700/50 rounded-full shadow-lg text-white bg-blue-700 dark:bg-blue-800 hover:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-blue-600 transition-all duration-300 transform hover:scale-105"
-          style={{ top: "2.25rem", left: "13.5rem" }}>
+          style={{ top: "1rem", left: "13.5rem" }}>
           <ChevronLeft className="h-5 w-5" />
         </button>
 
