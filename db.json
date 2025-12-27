@@ -1,21 +1,6 @@
 {
   "equipment": [
     {
-      "id": "443a",
-      "name": "Dialysis Machine Model 5000",
-      "type": "dialysis",
-      "status": "maintenance",
-      "department": "Nephrology",
-      "purchaseDate": "2023-01-15",
-      "nextMaintenance": "2025-12-30",
-      "utilizationRate": 75,
-      "serialNumber": "DLX-2023-001",
-      "model": "DLX-5000",
-      "manufacturer": "MedTech Inc.",
-      "location": "Room 101, Ward A",
-      "notes": "Regular maintenance required every 6 months"
-    },
-    {
       "id": "00b5",
       "name": "X-Ray Machine Pro",
       "type": "imaging",
@@ -29,21 +14,6 @@
       "manufacturer": "ImagingTech",
       "location": "Radiology Room 1",
       "notes": "High usage equipment, needs frequent calibration"
-    },
-    {
-      "name": "Portable Ventilator V200sss",
-      "type": "respiratory",
-      "status": "available",
-      "department": "ICU",
-      "purchaseDate": "2023-02-10",
-      "nextMaintenance": "2025-12-15",
-      "utilizationRate": 10,
-      "serialNumber": "VENT-2023-008",
-      "model": "V200",
-      "manufacturer": "RespiraTech",
-      "location": "ICU Station 3",
-      "notes": "Used for critical care patients",
-      "id": "2ce9"
     },
     {
       "id": "fc19",
@@ -134,21 +104,6 @@
       "manufacturer": "Stryker",
       "location": "Emergency Crash Cart 1",
       "notes": "Emergency resuscitation equipment"
-    },
-    {
-      "id": "g7h8",
-      "name": "Anesthesia Machine Aespire",
-      "type": "surgical",
-      "status": "in_use",
-      "department": "Surgery",
-      "purchaseDate": "2023-09-05",
-      "nextMaintenance": "2025-01-20",
-      "utilizationRate": 82,
-      "serialNumber": "ANE-2023-101",
-      "model": "Aespire 7100",
-      "manufacturer": "Datex-Ohmeda",
-      "location": "Operating Room 3",
-      "notes": "For general anesthesia delivery"
     },
     {
       "id": "i9j0",
@@ -299,12 +254,42 @@
       "manufacturer": "Arjo",
       "location": "Rehab Room 2",
       "notes": "For patient transfer and mobility"
+    },
+    {
+      "id": "76d2",
+      "name": "Tool 1",
+      "type": "laboratory",
+      "status": "maintenance",
+      "department": "Laboratory",
+      "purchaseDate": "2025-12-28",
+      "nextMaintenance": "2025-12-27",
+      "utilizationRate": 10
+    },
+    {
+      "id": "ef35",
+      "name": "no name",
+      "type": "imaging",
+      "status": "maintenance",
+      "department": "Radiology",
+      "purchaseDate": "2025-12-18",
+      "nextMaintenance": "2025-12-27",
+      "utilizationRate": 33
+    },
+    {
+      "id": "7b75",
+      "name": "uuuuu",
+      "type": "monitoring",
+      "status": "available",
+      "department": "Surgery",
+      "purchaseDate": "2025-12-30",
+      "nextMaintenance": "2026-05-19",
+      "utilizationRate": 10
     }
   ],
   "reservations": [
     {
       "id": "51ec",
-      "equipmentId": "2ce9",
+      "equipmentId": null,
       "startTime": "2025-12-27T09:00:00.000Z",
       "endTime": "2025-12-27T11:00:00.000Z",
       "purpose": "Scheduled patient dialysis session",
@@ -336,7 +321,7 @@
     },
     {
       "id": "dg6f",
-      "equipmentId": "g7h8",
+      "equipmentId": null,
       "startTime": "2025-12-29T07:30:00.000Z",
       "endTime": "2025-12-29T12:00:00.000Z",
       "purpose": "General surgery - appendectomy",
@@ -384,17 +369,33 @@
     },
     {
       "id": "6155",
-      "equipmentId": "2ce9",
+      "equipmentId": null,
       "startTime": "2025-12-15T23:45:00.000Z",
       "endTime": "2025-12-16T01:45:00.000Z",
       "purpose": "xxxx",
+      "status": "pending"
+    },
+    {
+      "id": "e0a3",
+      "equipmentId": "ef35",
+      "startTime": "2025-12-23T03:06:00.000Z",
+      "endTime": "2026-01-01T05:06:00.000Z",
+      "purpose": "mmmmm",
+      "status": "pending"
+    },
+    {
+      "id": "5c16",
+      "equipmentId": "e5f6",
+      "startTime": "2025-12-28T06:20:00.000Z",
+      "endTime": "2025-12-28T08:20:00.000Z",
+      "purpose": "mmmm",
       "status": "pending"
     }
   ],
   "maintenance": [
     {
       "id": "51e1",
-      "equipmentId": "443a",
+      "equipmentId": null,
       "issueType": "repair",
       "description": "Fluid pump malfunction - intermittent pressure drops during dialysis cycles. Requires pump replacement.",
       "priority": "high",
@@ -425,7 +426,7 @@
     },
     {
       "id": "e9a7",
-      "equipmentId": "2ce9",
+      "equipmentId": null,
       "issueType": "routine",
       "description": "Regular 6-month preventive maintenance - filter replacement, battery check, software update.",
       "priority": "medium",
@@ -556,7 +557,7 @@
     },
     {
       "id": "v0w1",
-      "equipmentId": "g7h8",
+      "equipmentId": null,
       "issueType": "repair",
       "description": "Vaporizer leak detected - anesthetic agent delivery inconsistent.",
       "priority": "high",
@@ -643,6 +644,26 @@
       "description": "Need to repair now",
       "priority": "urgent",
       "dateReported": "2025-12-27T01:42:55.244Z",
+      "status": "reported",
+      "reportedBy": "Admin"
+    },
+    {
+      "id": "272f",
+      "equipmentId": "76d2",
+      "issueType": "emergency",
+      "description": "This Maintenance for new Equipment",
+      "priority": "low",
+      "dateReported": "2025-12-27T05:02:17.452Z",
+      "status": "reported",
+      "reportedBy": "Admin"
+    },
+    {
+      "id": "6556",
+      "equipmentId": "ef35",
+      "issueType": "safety",
+      "description": "ooooooo",
+      "priority": "low",
+      "dateReported": "2025-12-27T05:07:28.450Z",
       "status": "reported",
       "reportedBy": "Admin"
     }
