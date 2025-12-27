@@ -85,8 +85,6 @@ const ScheduleReservationModal = ({ isOpen, onClose, onSuccess }) => {
     } catch (err) {
       console.error("Error scheduling reservation:", err);
       setError("Failed to schedule reservation. Please try again.");
-    } finally {
-      setSubmitting(false);
     }
   };
 

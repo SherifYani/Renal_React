@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { X, Plus, RefreshCw } from "lucide-react";
 import { createEquipment } from "../../services/equipment.service";
 
-const AddEquipmentModal = ({ isOpen, onClose, onSuccess }) => {
+const AddEquipmentModal = ({ isOpen, onClose, onSuccess, data }) => {
   const [formData, setFormData] = useState({
     name: "",
     type: "dialysis",
@@ -12,10 +12,9 @@ const AddEquipmentModal = ({ isOpen, onClose, onSuccess }) => {
     nextMaintenance: "",
     utilizationRate: 0,
   });
-
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitting(true);
@@ -39,8 +38,6 @@ const AddEquipmentModal = ({ isOpen, onClose, onSuccess }) => {
     } catch (err) {
       console.error("Error adding equipment:", err);
       setError("Failed to add equipment. Please try again.");
-    } finally {
-      setSubmitting(false);
     }
   };
 

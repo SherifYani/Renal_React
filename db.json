@@ -1,136 +1,807 @@
 {
   "equipment": [
     {
-      "id": "1120",
-      "name": "Ahmed",
-      "type": "monitoring",
+      "id": "443a",
+      "name": "Dialysis Machine Model 5000",
+      "type": "dialysis",
       "status": "maintenance",
-      "department": "ICU",
-      "purchaseDate": "2025-12-01",
-      "nextMaintenance": "2025-12-26",
-      "utilizationRate": 10
+      "department": "Nephrology",
+      "purchaseDate": "2023-01-15",
+      "nextMaintenance": "2025-12-30",
+      "utilizationRate": 75,
+      "serialNumber": "DLX-2023-001",
+      "model": "DLX-5000",
+      "manufacturer": "MedTech Inc.",
+      "location": "Room 101, Ward A",
+      "notes": "Regular maintenance required every 6 months"
     },
     {
-      "id": "d157",
-      "name": "Hammer",
+      "id": "00b5",
+      "name": "X-Ray Machine Pro",
+      "type": "imaging",
+      "status": "maintenance",
+      "department": "Radiology",
+      "purchaseDate": "2023-03-20",
+      "nextMaintenance": "2025-12-28",
+      "utilizationRate": 90,
+      "serialNumber": "XRAY-2023-015",
+      "model": "X-Pro 3000",
+      "manufacturer": "ImagingTech",
+      "location": "Radiology Room 1",
+      "notes": "High usage equipment, needs frequent calibration"
+    },
+    {
+      "name": "Portable Ventilator V200sss",
+      "type": "respiratory",
+      "status": "available",
+      "department": "ICU",
+      "purchaseDate": "2023-02-10",
+      "nextMaintenance": "2025-12-15",
+      "utilizationRate": 10,
+      "serialNumber": "VENT-2023-008",
+      "model": "V200",
+      "manufacturer": "RespiraTech",
+      "location": "ICU Station 3",
+      "notes": "Used for critical care patients",
+      "id": "2ce9"
+    },
+    {
+      "id": "fc19",
+      "name": "Ultrasound Scanner",
+      "type": "imaging",
+      "status": "in_use",
+      "department": "Radiology",
+      "purchaseDate": "2023-04-05",
+      "nextMaintenance": "2025-12-20",
+      "utilizationRate": 85,
+      "serialNumber": "US-2023-012",
+      "model": "SonoView 5",
+      "manufacturer": "Sonix",
+      "location": "Imaging Room 2",
+      "notes": "Daily use for diagnostics"
+    },
+    {
+      "id": "3c40",
+      "name": "Patient Monitor PM400",
+      "type": "monitoring",
+      "status": "available",
+      "department": "Emergency",
+      "purchaseDate": "2023-05-12",
+      "nextMaintenance": "2025-12-25",
+      "utilizationRate": 70,
+      "serialNumber": "PM-2023-025",
+      "model": "PM400",
+      "manufacturer": "MonitorTech",
+      "location": "Emergency Room 4",
+      "notes": "Vital signs monitoring"
+    },
+    {
+      "id": "27c9",
+      "name": "Infusion Pump IP300",
+      "type": "infusion",
+      "status": "in_use",
+      "department": "ICU",
+      "purchaseDate": "2023-06-18",
+      "nextMaintenance": "2025-12-10",
+      "utilizationRate": 80,
+      "serialNumber": "IP-2023-030",
+      "model": "IP300",
+      "manufacturer": "MedFlow",
+      "location": "ICU Station 5",
+      "notes": "For medication delivery"
+    },
+    {
+      "id": "a1b2",
+      "name": "MRI Scanner 3T",
       "type": "imaging",
       "status": "available",
+      "department": "Radiology",
+      "purchaseDate": "2022-11-30",
+      "nextMaintenance": "2025-01-15",
+      "utilizationRate": 95,
+      "serialNumber": "MRI-2022-045",
+      "model": "Magnetom 3T",
+      "manufacturer": "Siemens Healthineers",
+      "location": "MRI Suite 1",
+      "notes": "High-field MRI, requires specialized maintenance"
+    },
+    {
+      "id": "c3d4",
+      "name": "CT Scanner 128-Slice",
+      "type": "imaging",
+      "status": "maintenance",
+      "department": "Radiology",
+      "purchaseDate": "2023-08-22",
+      "nextMaintenance": "2025-12-27",
+      "utilizationRate": 88,
+      "serialNumber": "CT-2023-067",
+      "model": "Revolution 128",
+      "manufacturer": "GE Healthcare",
+      "location": "CT Room 1",
+      "notes": "High-speed scanning capability"
+    },
+    {
+      "id": "e5f6",
+      "name": "Defibrillator LifePak 15",
+      "type": "emergency",
+      "status": "available",
+      "department": "Emergency",
+      "purchaseDate": "2023-07-14",
+      "nextMaintenance": "2025-11-30",
+      "utilizationRate": 45,
+      "serialNumber": "DEF-2023-089",
+      "model": "LifePak 15",
+      "manufacturer": "Stryker",
+      "location": "Emergency Crash Cart 1",
+      "notes": "Emergency resuscitation equipment"
+    },
+    {
+      "id": "g7h8",
+      "name": "Anesthesia Machine Aespire",
+      "type": "surgical",
+      "status": "in_use",
       "department": "Surgery",
-      "purchaseDate": "2025-12-31",
-      "nextMaintenance": "2026-07-01",
-      "utilizationRate": 100
+      "purchaseDate": "2023-09-05",
+      "nextMaintenance": "2025-01-20",
+      "utilizationRate": 82,
+      "serialNumber": "ANE-2023-101",
+      "model": "Aespire 7100",
+      "manufacturer": "Datex-Ohmeda",
+      "location": "Operating Room 3",
+      "notes": "For general anesthesia delivery"
+    },
+    {
+      "id": "i9j0",
+      "name": "ECG Machine 12-Lead",
+      "type": "cardiology",
+      "status": "available",
+      "department": "Cardiology",
+      "purchaseDate": "2023-10-18",
+      "nextMaintenance": "2025-12-05",
+      "utilizationRate": 65,
+      "serialNumber": "ECG-2023-112",
+      "model": "CardioMax 12",
+      "manufacturer": "Philips",
+      "location": "Cardiology Lab",
+      "notes": "12-lead electrocardiogram machine"
+    },
+    {
+      "id": "k1l2",
+      "name": "Blood Gas Analyzer",
+      "type": "lab",
+      "status": "maintenance",
+      "department": "Laboratory",
+      "purchaseDate": "2023-11-25",
+      "nextMaintenance": "2025-01-05",
+      "utilizationRate": 78,
+      "serialNumber": "BGA-2023-125",
+      "model": "ABL90 FLEX",
+      "manufacturer": "Radiometer",
+      "location": "Central Lab",
+      "notes": "Critical for ICU and emergency cases"
+    },
+    {
+      "id": "m3n4",
+      "name": "Patient Bed ICU",
+      "type": "bed",
+      "status": "available",
+      "department": "ICU",
+      "purchaseDate": "2023-12-10",
+      "nextMaintenance": "2025-12-18",
+      "utilizationRate": 92,
+      "serialNumber": "BED-2023-136",
+      "model": "Century ICU",
+      "manufacturer": "Hill-Rom",
+      "location": "ICU Room 4",
+      "notes": "Electric ICU bed with monitoring integration"
+    },
+    {
+      "id": "o5p6",
+      "name": "Surgical C-Arm",
+      "type": "surgical",
+      "status": "in_use",
+      "department": "Surgery",
+      "purchaseDate": "2023-08-30",
+      "nextMaintenance": "2025-01-25",
+      "utilizationRate": 70,
+      "serialNumber": "CARM-2023-147",
+      "model": "Ziehm Vision RFD",
+      "manufacturer": "Ziehm Imaging",
+      "location": "Operating Room 2",
+      "notes": "Mobile fluoroscopy for surgery"
+    },
+    {
+      "id": "q7r8",
+      "name": "Portable Ultrasound",
+      "type": "imaging",
+      "status": "available",
+      "department": "Emergency",
+      "purchaseDate": "2023-07-22",
+      "nextMaintenance": "2025-12-22",
+      "utilizationRate": 73,
+      "serialNumber": "PUS-2023-158",
+      "model": "Lumify",
+      "manufacturer": "Philips",
+      "location": "Emergency Trolley",
+      "notes": "Portable for bedside examinations"
+    },
+    {
+      "id": "s9t0",
+      "name": "NICU Incubator",
+      "type": "neonatal",
+      "status": "in_use",
+      "department": "NICU",
+      "purchaseDate": "2023-05-30",
+      "nextMaintenance": "2025-12-28",
+      "utilizationRate": 85,
+      "serialNumber": "INC-2023-169",
+      "model": "Giraffe OmniBed",
+      "manufacturer": "GE Healthcare",
+      "location": "NICU Room 3",
+      "notes": "For premature infants"
+    },
+    {
+      "id": "u1v2",
+      "name": "PACS Server",
+      "type": "it",
+      "status": "available",
+      "department": "IT",
+      "purchaseDate": "2023-04-18",
+      "nextMaintenance": "2025-03-01",
+      "utilizationRate": 99,
+      "serialNumber": "PACS-2023-180",
+      "model": "VNA Server Pro",
+      "manufacturer": "FUJIFILM",
+      "location": "Server Room",
+      "notes": "Medical image storage and distribution"
+    },
+    {
+      "id": "w3x4",
+      "name": "Hemodialysis Water Treatment",
+      "type": "dialysis",
+      "status": "maintenance",
+      "department": "Nephrology",
+      "purchaseDate": "2023-03-15",
+      "nextMaintenance": "2025-12-29",
+      "utilizationRate": 80,
+      "serialNumber": "HWT-2023-191",
+      "model": "AquaB Plus",
+      "manufacturer": "Fresenius",
+      "location": "Dialysis Center",
+      "notes": "Water purification for dialysis"
+    },
+    {
+      "id": "y5z6",
+      "name": "Autoclave Sterilizer",
+      "type": "sterilization",
+      "status": "available",
+      "department": "Central Sterile",
+      "purchaseDate": "2023-06-25",
+      "nextMaintenance": "2025-01-10",
+      "utilizationRate": 95,
+      "serialNumber": "ACS-2023-202",
+      "model": "Midmark M11",
+      "manufacturer": "Midmark",
+      "location": "CSSD",
+      "notes": "Instrument sterilization"
+    },
+    {
+      "id": "1a2b",
+      "name": "Patient Lift System",
+      "type": "mobility",
+      "status": "in_use",
+      "department": "Rehabilitation",
+      "purchaseDate": "2023-09-30",
+      "nextMaintenance": "2025-12-15",
+      "utilizationRate": 60,
+      "serialNumber": "PLS-2023-213",
+      "model": "Liko Pro",
+      "manufacturer": "Arjo",
+      "location": "Rehab Room 2",
+      "notes": "For patient transfer and mobility"
     }
   ],
   "reservations": [
     {
-      "id": "929b",
-      "equipmentId": "1120",
-      "startTime": "2025-12-09T11:32:00.000Z",
+      "id": "51ec",
+      "equipmentId": "2ce9",
+      "startTime": "2025-12-27T09:00:00.000Z",
+      "endTime": "2025-12-27T11:00:00.000Z",
+      "purpose": "Scheduled patient dialysis session",
+      "status": "confirmed"
+    },
+    {
+      "id": "8ac3",
+      "equipmentId": "3c40",
+      "startTime": "2025-12-26T10:30:00.000Z",
       "endTime": "2025-12-26T12:30:00.000Z",
-      "purpose": "No reason",
+      "purpose": "Emergency room monitoring setup",
+      "status": "confirmed"
+    },
+    {
+      "id": "9bd4",
+      "equipmentId": "a1b2",
+      "startTime": "2025-12-27T08:00:00.000Z",
+      "endTime": "2025-12-27T10:30:00.000Z",
+      "purpose": "Brain MRI for neurological assessment",
+      "status": "confirmed"
+    },
+    {
+      "id": "cfe5",
+      "equipmentId": "c3d4",
+      "startTime": "2025-12-28T09:00:00.000Z",
+      "endTime": "2025-12-28T11:00:00.000Z",
+      "purpose": "Chest CT for pulmonary embolism",
+      "status": "confirmed"
+    },
+    {
+      "id": "dg6f",
+      "equipmentId": "g7h8",
+      "startTime": "2025-12-29T07:30:00.000Z",
+      "endTime": "2025-12-29T12:00:00.000Z",
+      "purpose": "General surgery - appendectomy",
+      "status": "confirmed"
+    },
+    {
+      "id": "eh7g",
+      "equipmentId": "o5p6",
+      "startTime": "2025-12-30T13:00:00.000Z",
+      "endTime": "2025-12-30T16:00:00.000Z",
+      "purpose": "Orthopedic surgery - spinal fusion",
+      "status": "confirmed"
+    },
+    {
+      "id": "fi8h",
+      "equipmentId": "q7r8",
+      "startTime": "2025-12-31T10:00:00.000Z",
+      "endTime": "2025-12-31T11:30:00.000Z",
+      "purpose": "Emergency FAST exam for trauma",
+      "status": "confirmed"
+    },
+    {
+      "id": "gj9i",
+      "equipmentId": "s9t0",
+      "startTime": "2025-01-02T08:00:00.000Z",
+      "endTime": "2025-01-02T18:00:00.000Z",
+      "purpose": "NICU patient monitoring",
+      "status": "confirmed"
+    },
+    {
+      "id": "hk0j",
+      "equipmentId": "i9j0",
+      "startTime": "2025-12-29T14:00:00.000Z",
+      "endTime": "2025-12-29T15:00:00.000Z",
+      "purpose": "Pre-operative cardiac assessment",
+      "status": "pending"
+    },
+    {
+      "id": "313a",
+      "equipmentId": "q7r8",
+      "startTime": "2025-12-27T23:45:00.000Z",
+      "endTime": "2025-12-28T01:45:00.000Z",
+      "purpose": "......",
+      "status": "pending"
+    },
+    {
+      "id": "6155",
+      "equipmentId": "2ce9",
+      "startTime": "2025-12-15T23:45:00.000Z",
+      "endTime": "2025-12-16T01:45:00.000Z",
+      "purpose": "xxxx",
       "status": "pending"
     }
   ],
   "maintenance": [
     {
       "id": "51e1",
-      "equipmentId": "1120",
+      "equipmentId": "443a",
       "issueType": "repair",
-      "description": "Not now",
+      "description": "Fluid pump malfunction - intermittent pressure drops during dialysis cycles. Requires pump replacement.",
+      "priority": "high",
+      "dateReported": "2025-12-25T10:30:00.000Z",
+      "status": "in_progress",
+      "reportedBy": "Dr. Johnson",
+      "assignedTo": "Tech Team A",
+      "estimatedCompletion": "2025-12-28T17:00:00.000Z",
+      "partsNeeded": [
+        "Fluid Pump Assembly",
+        "Pressure Sensor"
+      ]
+    },
+    {
+      "id": "e232",
+      "equipmentId": "00b5",
+      "issueType": "calibration",
+      "description": "Image quality degradation - requires recalibration of X-ray tube and detector alignment.",
+      "priority": "medium",
+      "dateReported": "2025-12-24T14:20:00.000Z",
+      "status": "reported",
+      "reportedBy": "Radiology Technician",
+      "assignedTo": "Calibration Team",
+      "estimatedCompletion": "2025-12-29T12:00:00.000Z",
+      "partsNeeded": [
+        "Calibration Kit"
+      ]
+    },
+    {
+      "id": "e9a7",
+      "equipmentId": "2ce9",
+      "issueType": "routine",
+      "description": "Regular 6-month preventive maintenance - filter replacement, battery check, software update.",
+      "priority": "medium",
+      "dateReported": "2025-12-20T09:00:00.000Z",
+      "status": "completed",
+      "reportedBy": "Maintenance Scheduler",
+      "assignedTo": "Tech Team B",
+      "dateCompleted": "2025-12-22T16:45:00.000Z",
+      "partsNeeded": [
+        "Air Filter",
+        "Battery Pack"
+      ],
+      "cost": 450,
+      "notes": "Equipment passed all tests, ready for use."
+    },
+    {
+      "id": "b8c2",
+      "equipmentId": "fc19",
+      "issueType": "safety",
+      "description": "Power supply making unusual noise - potential safety hazard, needs immediate inspection.",
+      "priority": "urgent",
+      "dateReported": "2025-12-26T08:15:00.000Z",
+      "status": "reported",
+      "reportedBy": "Nurse Smith",
+      "assignedTo": "Safety Team",
+      "estimatedCompletion": "2025-12-27T18:00:00.000Z",
+      "partsNeeded": [
+        "Power Supply Unit"
+      ]
+    },
+    {
+      "id": "d4f6",
+      "equipmentId": "3c40",
+      "issueType": "repair",
+      "description": "Screen flickering intermittently - affecting vital sign readings display.",
+      "priority": "high",
+      "dateReported": "2025-12-23T16:40:00.000Z",
+      "status": "in_progress",
+      "reportedBy": "Dr. Williams",
+      "assignedTo": "Tech Team C",
+      "estimatedCompletion": "2025-12-27T14:00:00.000Z",
+      "partsNeeded": [
+        "LCD Screen",
+        "Display Cable"
+      ]
+    },
+    {
+      "id": "a7e3",
+      "equipmentId": "27c9",
+      "issueType": "emergency",
+      "description": "Motor failure - infusion pump not delivering medication at correct rate.",
+      "priority": "urgent",
+      "dateReported": "2025-12-26T07:30:00.000Z",
+      "status": "reported",
+      "reportedBy": "ICU Nurse",
+      "assignedTo": "Emergency Response",
+      "estimatedCompletion": "2025-12-26T20:00:00.000Z",
+      "partsNeeded": [
+        "Stepper Motor",
+        "Control Board"
+      ]
+    },
+    {
+      "id": "m2n3",
+      "equipmentId": "a1b2",
+      "issueType": "calibration",
+      "description": "MRI magnet drift detected - requires recalibration for accurate imaging.",
+      "priority": "high",
+      "dateReported": "2025-12-22T11:00:00.000Z",
+      "status": "in_progress",
+      "reportedBy": "Radiologist",
+      "assignedTo": "MRI Specialist Team",
+      "estimatedCompletion": "2025-12-30T10:00:00.000Z",
+      "partsNeeded": [
+        "Gradient Coil",
+        "Shim Kit"
+      ]
+    },
+    {
+      "id": "p4q5",
+      "equipmentId": "k1l2",
+      "issueType": "repair",
+      "description": "Sample probe malfunction - inconsistent blood gas readings.",
+      "priority": "urgent",
+      "dateReported": "2025-12-26T09:45:00.000Z",
+      "status": "reported",
+      "reportedBy": "Lab Technician",
+      "assignedTo": "Lab Equipment Team",
+      "estimatedCompletion": "2025-12-27T15:00:00.000Z",
+      "partsNeeded": [
+        "Sample Probe",
+        "Reagent Pack"
+      ]
+    },
+    {
+      "id": "r6s7",
+      "equipmentId": "w3x4",
+      "issueType": "safety",
+      "description": "Water conductivity levels abnormal - potential dialysis fluid contamination risk.",
+      "priority": "urgent",
+      "dateReported": "2025-12-25T16:20:00.000Z",
+      "status": "in_progress",
+      "reportedBy": "Dialysis Nurse",
+      "assignedTo": "Water Treatment Team",
+      "estimatedCompletion": "2025-12-27T12:00:00.000Z",
+      "partsNeeded": [
+        "RO Membrane",
+        "Conductivity Sensor"
+      ]
+    },
+    {
+      "id": "t8u9",
+      "equipmentId": "c3d4",
+      "issueType": "routine",
+      "description": "Quarterly preventive maintenance - tube cleaning, detector calibration, software update.",
+      "priority": "medium",
+      "dateReported": "2025-12-24T10:00:00.000Z",
+      "status": "completed",
+      "reportedBy": "Maintenance Scheduler",
+      "assignedTo": "CT Maintenance Team",
+      "dateCompleted": "2025-12-24T18:30:00.000Z",
+      "partsNeeded": [
+        "X-ray Tube Filter",
+        "Calibration Phantom"
+      ],
+      "cost": 1200,
+      "notes": "CT scanner operating within specifications"
+    },
+    {
+      "id": "v0w1",
+      "equipmentId": "g7h8",
+      "issueType": "repair",
+      "description": "Vaporizer leak detected - anesthetic agent delivery inconsistent.",
+      "priority": "high",
+      "dateReported": "2025-12-23T14:30:00.000Z",
+      "status": "in_progress",
+      "reportedBy": "Anesthesiologist",
+      "assignedTo": "Anesthesia Team",
+      "estimatedCompletion": "2025-12-28T09:00:00.000Z",
+      "partsNeeded": [
+        "Sevoflurane Vaporizer",
+        "Pressure Regulator"
+      ]
+    },
+    {
+      "id": "x2y3",
+      "equipmentId": "o5p6",
+      "issueType": "calibration",
+      "description": "C-Arm positioning drift - affecting surgical navigation accuracy.",
+      "priority": "medium",
+      "dateReported": "2025-12-22T13:15:00.000Z",
+      "status": "reported",
+      "reportedBy": "Surgical Technician",
+      "assignedTo": "Surgical Equipment Team",
+      "estimatedCompletion": "2025-01-03T14:00:00.000Z",
+      "partsNeeded": [
+        "Positioning Sensor",
+        "Encoder Kit"
+      ]
+    },
+    {
+      "id": "z4a5",
+      "equipmentId": "y5z6",
+      "issueType": "repair",
+      "description": "Door seal failure - autoclave not reaching proper sterilization pressure.",
+      "priority": "high",
+      "dateReported": "2025-12-26T11:20:00.000Z",
+      "status": "reported",
+      "reportedBy": "Sterilization Tech",
+      "assignedTo": "Sterilization Team",
+      "estimatedCompletion": "2025-12-29T16:00:00.000Z",
+      "partsNeeded": [
+        "Door Gasket",
+        "Pressure Valve"
+      ]
+    },
+    {
+      "id": "b6c7",
+      "equipmentId": "e5f6",
+      "issueType": "routine",
+      "description": "Monthly battery check and electrode pad replacement.",
       "priority": "low",
-      "dateReported": "2025-12-26T21:05:03.744Z",
+      "dateReported": "2025-12-25T09:00:00.000Z",
+      "status": "completed",
+      "reportedBy": "Emergency Department",
+      "assignedTo": "Emergency Equipment Team",
+      "dateCompleted": "2025-12-25T10:30:00.000Z",
+      "partsNeeded": [
+        "Defibrillator Battery",
+        "Electrode Pads"
+      ],
+      "cost": 85,
+      "notes": "Defibrillator ready for emergency use"
+    },
+    {
+      "id": "d8e9",
+      "equipmentId": "i9j0",
+      "issueType": "software",
+      "description": "ECG analysis software needs update for new diagnostic algorithms.",
+      "priority": "medium",
+      "dateReported": "2025-12-24T15:45:00.000Z",
+      "status": "in_progress",
+      "reportedBy": "Cardiology Dept",
+      "assignedTo": "IT Support Team",
+      "estimatedCompletion": "2025-12-30T11:00:00.000Z",
+      "partsNeeded": [
+        "Software License"
+      ],
+      "notes": "Update includes new arrhythmia detection algorithms"
+    },
+    {
+      "id": "cf79",
+      "equipmentId": "c3d4",
+      "issueType": "repair",
+      "description": "Need to repair now",
+      "priority": "urgent",
+      "dateReported": "2025-12-27T01:42:55.244Z",
       "status": "reported",
       "reportedBy": "Admin"
-    }
-  ],
-  "users": [
-    {
-      "id": "1",
-      "name": "Dr. Sarah Chen",
-      "role": "doctor",
-      "department": "Nephrology",
-      "email": "sarah.chen@renalhospital.com",
-      "phone": "+1-555-0101",
-      "avatar": "/api/placeholder/150/150",
-      "status": "active"
-    },
-    {
-      "id": "2",
-      "name": "Dr. Michael Rodriguez",
-      "role": "doctor",
-      "department": "Emergency",
-      "email": "michael.r@renalhospital.com",
-      "phone": "+1-555-0102",
-      "avatar": "/api/placeholder/150/150",
-      "status": "active"
-    },
-    {
-      "id": "3",
-      "name": "Nurse Jane Wilson",
-      "role": "nurse",
-      "department": "ICU",
-      "email": "jane.w@renalhospital.com",
-      "phone": "+1-555-0103",
-      "avatar": "/api/placeholder/150/150",
-      "status": "active"
-    },
-    {
-      "id": "4",
-      "name": "Admin Alex Johnson",
-      "role": "admin",
-      "department": "Administration",
-      "email": "alex.j@renalhospital.com",
-      "phone": "+1-555-0104",
-      "avatar": "/api/placeholder/150/150",
-      "status": "active"
     }
   ],
   "analytics": {
     "dailyUsage": [
       {
-        "date": "2024-01-15",
+        "date": "2025-12-15",
         "utilization": 78
       },
       {
-        "date": "2024-01-16",
+        "date": "2025-12-16",
         "utilization": 82
       },
       {
-        "date": "2024-01-17",
+        "date": "2025-12-17",
         "utilization": 85
       },
       {
-        "date": "2024-01-18",
+        "date": "2025-12-18",
         "utilization": 79
       },
       {
-        "date": "2024-01-19",
+        "date": "2025-12-19",
         "utilization": 88
+      },
+      {
+        "date": "2025-12-20",
+        "utilization": 76
+      },
+      {
+        "date": "2025-12-21",
+        "utilization": 72
+      },
+      {
+        "date": "2025-12-22",
+        "utilization": 81
+      },
+      {
+        "date": "2025-12-23",
+        "utilization": 84
+      },
+      {
+        "date": "2025-12-24",
+        "utilization": 68
+      },
+      {
+        "date": "2025-12-25",
+        "utilization": 45
+      },
+      {
+        "date": "2025-12-26",
+        "utilization": 82
+      },
+      {
+        "date": "2025-12-27",
+        "utilization": 85
+      },
+      {
+        "date": "2025-12-28",
+        "utilization": 79
+      },
+      {
+        "date": "2025-12-29",
+        "utilization": 83
+      },
+      {
+        "date": "2025-12-30",
+        "utilization": 87
       }
     ],
     "departmentUtilization": [
       {
         "department": "Nephrology",
-        "utilization": 92
+        "utilization": 92,
+        "totalEquipment": 4,
+        "available": 2
       },
       {
         "department": "ICU",
-        "utilization": 88
+        "utilization": 88,
+        "totalEquipment": 8,
+        "available": 3
       },
       {
         "department": "Emergency",
-        "utilization": 76
+        "utilization": 76,
+        "totalEquipment": 6,
+        "available": 4
       },
       {
         "department": "Radiology",
-        "utilization": 81
+        "utilization": 81,
+        "totalEquipment": 12,
+        "available": 5
+      },
+      {
+        "department": "Surgery",
+        "utilization": 65,
+        "totalEquipment": 7,
+        "available": 3
+      },
+      {
+        "department": "Cardiology",
+        "utilization": 72,
+        "totalEquipment": 5,
+        "available": 3
+      },
+      {
+        "department": "Laboratory",
+        "utilization": 85,
+        "totalEquipment": 9,
+        "available": 2
+      },
+      {
+        "department": "NICU",
+        "utilization": 90,
+        "totalEquipment": 6,
+        "available": 2
+      },
+      {
+        "department": "Rehabilitation",
+        "utilization": 58,
+        "totalEquipment": 4,
+        "available": 3
       }
     ],
     "equipmentStatus": {
-      "available": 15,
-      "in_use": 22,
-      "maintenance": 3,
-      "reserved": 5
+      "available": 8,
+      "in_use": 7,
+      "maintenance": 5,
+      "reserved": 0
+    },
+    "maintenanceStats": {
+      "totalRequests": 15,
+      "active": 12,
+      "completed": 3,
+      "urgent": 4,
+      "high": 5,
+      "medium": 5,
+      "low": 1,
+      "averageResolutionTime": "72 hours",
+      "monthlyCost": 1735,
+      "downtimeHours": 48
+    },
+    "utilizationTrends": {
+      "weeklyAverage": 78.5,
+      "monthlyAverage": 76.2,
+      "peakDay": "2025-12-27",
+      "peakUtilization": 87,
+      "lowestDay": "2025-12-25",
+      "lowestUtilization": 45
+    },
+    "maintenanceCosts": {
+      "currentMonth": 1735,
+      "previousMonth": 2450,
+      "quarterly": 8920,
+      "yearly": 32450,
+      "averagePerRequest": 265
     }
   }
 }

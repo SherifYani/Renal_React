@@ -13,7 +13,7 @@ export const createEquipment = (equipmentData) => {
 };
 
 export const updateEquipment = (id, equipmentData) => {
-  return api.put(`/equipment/${id}`, equipmentData);  // Fixed
+  return api.put(`/equipment/${id}`, equipmentData); 
 };
 
 export const patchEquipment = (id, updates) => {

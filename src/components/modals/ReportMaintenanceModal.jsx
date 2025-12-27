@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { X, Wrench, RefreshCw } from "lucide-react";
 import { getEquipment } from "../../services/equipment.service";
+import { maintenanceService } from "../../services/maintenance.service";
 
 const ReportMaintenanceModal = ({ isOpen, onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
@@ -46,7 +47,7 @@ const ReportMaintenanceModal = ({ isOpen, onClose, onSuccess }) => {
     setError("");
 
     try {
-      // Create maintenance request
+      // Create maintenance request using the service
       const maintenanceRequest = {
         ...formData,
         dateReported: new Date().toISOString(),
@@ -54,18 +55,14 @@ const ReportMaintenanceModal = ({ isOpen, onClose, onSuccess }) => {
         reportedBy: "Admin",
       };
 
+      // Use the maintenance service
+      await maintenanceService.create(maintenanceRequest);
+
+      // Update equipment status to maintenance
       const selectedEquipment = availableEquipment.find(
         (e) => e.id === formData.equipmentId
       );
       if (selectedEquipment) {
-        // First, create maintenance record
-        await fetch("http://localhost:3001/maintenance", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(maintenanceRequest),
-        });
-
-        // Then, update equipment status
         await fetch(`http://localhost:3001/equipment/${selectedEquipment.id}`, {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -78,14 +75,6 @@ const ReportMaintenanceModal = ({ isOpen, onClose, onSuccess }) => {
 
       onSuccess();
       onClose();
-
-      // Reset form
-      setFormData({
-        equipmentId: "",
-        issueType: "routine",
-        description: "",
-        priority: "medium",
-      });
     } catch (err) {
       console.error("Error reporting maintenance:", err);
       setError("Failed to report maintenance. Please try again.");
