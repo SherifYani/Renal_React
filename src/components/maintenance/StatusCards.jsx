@@ -13,7 +13,7 @@ const StatusCards = ({ maintenanceRequests }) => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
-      <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
         <div className={`text-2xl font-bold ${STATS_COLORS.total}`}>
           {stats.total}
         </div>
@@ -21,13 +21,13 @@ const StatusCards = ({ maintenanceRequests }) => {
           Total Requests
         </div>
       </div>
-      <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
         <div className={`text-2xl font-bold ${STATS_COLORS.reported}`}>
           {stats.reported}
         </div>
         <div className="text-sm text-gray-500 dark:text-gray-400">Reported</div>
       </div>
-      <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
         <div className={`text-2xl font-bold ${STATS_COLORS.in_progress}`}>
           {stats.in_progress}
         </div>
@@ -35,7 +35,7 @@ const StatusCards = ({ maintenanceRequests }) => {
           In Progress
         </div>
       </div>
-      <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
+      <div className="bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 p-4 rounded-xl border border-gray-200 dark:border-gray-700">
         <div className={`text-2xl font-bold ${STATS_COLORS.completed}`}>
           {stats.completed}
         </div>

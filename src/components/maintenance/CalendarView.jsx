@@ -126,7 +126,7 @@ const CalendarView = ({ events, onEventClick, onDateClick }) => {
         headerToolbar={{
           left: "prev,next today",
           center: "title",
-          right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+          right: "dayGridMonth,timeGridWeek,timeGridDay"
         }}
         events={events}
         eventClick={onEventClick}
@@ -148,15 +148,6 @@ const CalendarView = ({ events, onEventClick, onDateClick }) => {
               </div>
             </div>
           );
-        }}
-        views={{
-          listMonth: {
-            listDayFormat: {
-              weekday: "short",
-              month: "numeric",
-              day: "numeric",
-            },
-          },
         }}
       />
     </div>

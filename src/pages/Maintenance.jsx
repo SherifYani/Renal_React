@@ -5,16 +5,19 @@ import ReportMaintenanceModal from "../components/modals/ReportMaintenanceModal"
 import SuccessNotification from "../components/common/SuccessNotification";
 import LoadingState from "../components/common/LoadingState";
 import ErrorState from "../components/common/ErrorState";
-import StatusCards from "../components/maintenance/StatusCards";
+import Button from "../components/common/Button";
+import PageLayout from "../components/layout/PageLayout";
+import PageHeader from "../components/layout/PageHeader";
 import FilterBar from "../components/maintenance/FilterBar";
-import ViewToggle from "../components/maintenance/ViewToggle";
 import ListView from "../components/maintenance/ListView";
 import CalendarView from "../components/maintenance/CalendarView";
 import EventDetailsModal from "../components/maintenance/EventDetailsModal";
-import { formatDate, getEventColor } from "../utils/maintenance.utils";
+import ViewToggle from "../components/maintenance/ViewToggle";
+import StatusCards from "../components/maintenance/StatusCards";
+import { getEventColor } from "../utils/maintenance.utils";
 import {
-  STATUS_COLORS,
-  PRIORITY_COLORS,
+  STATUS_OPTIONS,
+  PRIORITY_OPTIONS,
 } from "../constants/maintenance.constants";
 
 const Maintenance = () => {
@@ -23,17 +26,16 @@ const Maintenance = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentView, setCurrentView] = useState("list");
+  const [showReportModal, setShowReportModal] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+  const [selectedEvent, setSelectedEvent] = useState(null);
+  const [showEventModal, setShowEventModal] = useState(false);
 
   const [filters, setFilters] = useState({
     searchTerm: "",
     statusFilter: "all",
     priorityFilter: "all",
   });
-
-  const [showReportModal, setShowReportModal] = useState(false);
-  const [successMessage, setSuccessMessage] = useState("");
-  const [selectedEvent, setSelectedEvent] = useState(null);
-  const [showEventModal, setShowEventModal] = useState(false);
 
   // Load data
   useEffect(() => {
@@ -65,7 +67,6 @@ const Maintenance = () => {
     }
   }, []);
 
-  // Handle status update
   const handleUpdateStatus = useCallback(
     async (id, status) => {
       try {
@@ -106,7 +107,6 @@ const Maintenance = () => {
     [maintenanceRequests, loadData]
   );
 
-  // Handle successful actions
   const handleSuccess = useCallback(
     (message) => {
       setSuccessMessage(message);
@@ -115,28 +115,16 @@ const Maintenance = () => {
     [loadData]
   );
 
-  // Update filter
   const handleFilterChange = useCallback((filterName, value) => {
     setFilters((prev) => ({ ...prev, [filterName]: value }));
   }, []);
 
-  // Clear all filters
   const handleClearFilters = useCallback(() => {
     setFilters({
       searchTerm: "",
       statusFilter: "all",
       priorityFilter: "all",
     });
-  }, []);
-
-  // Event handlers for calendar
-  const handleEventClick = useCallback((clickInfo) => {
-    setSelectedEvent(clickInfo.event.extendedProps);
-    setShowEventModal(true);
-  }, []);
-
-  const handleDateClick = useCallback(() => {
-    setShowReportModal(true);
   }, []);
 
   // Memoized calculations
@@ -149,7 +137,6 @@ const Maintenance = () => {
 
   const filteredRequests = useMemo(() => {
     return maintenanceRequests.filter((request) => {
-      // Search filter
       if (
         filters.searchTerm &&
         !request.description
@@ -159,7 +146,6 @@ const Maintenance = () => {
         return false;
       }
 
-      // Status filter
       if (
         filters.statusFilter !== "all" &&
         request.status !== filters.statusFilter
@@ -167,7 +153,6 @@ const Maintenance = () => {
         return false;
       }
 
-      // Priority filter
       if (
         filters.priorityFilter !== "all" &&
         request.priority !== filters.priorityFilter
@@ -202,59 +187,81 @@ const Maintenance = () => {
     });
   }, [filteredRequests, equipmentMap]);
 
-  // Loading state
+  // Filter configuration
+  const filterConfig = useMemo(
+    () => ({
+      searchPlaceholder: "Search maintenance requests...",
+      filters: [
+        {
+          name: "statusFilter",
+          label: "Status",
+          options: STATUS_OPTIONS,
+        },
+        {
+          name: "priorityFilter",
+          label: "Priority",
+          options: PRIORITY_OPTIONS,
+        },
+      ],
+    }),
+    []
+  );
+
+  // Event handlers
+  const handleEventClick = useCallback((clickInfo) => {
+    setSelectedEvent(clickInfo.event.extendedProps);
+    setShowEventModal(true);
+  }, []);
+
+  const handleDateClick = useCallback(() => {
+    setShowReportModal(true);
+  }, []);
+
   if (loading) {
     return <LoadingState message="Loading maintenance data..." />;
   }
 
   return (
     <div className="p-6 bg-gradient-to-br from-blue-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 min-h-screen">
-      {/* Success Notification */}
       <SuccessNotification
         message={successMessage}
         onClose={() => setSuccessMessage("")}
       />
 
-      {/* Header */}
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
-            Maintenance Tracking
-          </h1>
-          <p className="text-gray-600 dark:text-gray-300">
-            Track and manage equipment maintenance requests
-          </p>
-        </div>
-        <div className="flex gap-3">
-          <button
-            onClick={loadData}
-            className="flex items-center gap-2 px-4 py-2.5 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 rounded-lg transition-colors duration-200">
-            <RefreshCw className="w-4 h-4" />
-            Refresh
-          </button>
-          <button
-            onClick={() => setShowReportModal(true)}
-            className="flex items-center gap-2 px-4 py-2.5 bg-yellow-600 hover:bg-yellow-700 dark:bg-yellow-700 dark:hover:bg-yellow-600 text-white rounded-lg transition-colors duration-200">
-            <Plus className="w-4 h-4" />
-            Report Maintenance
-          </button>
-        </div>
-      </div>
+      <PageHeader
+        title="Maintenance Tracking"
+        description="Track and manage equipment maintenance requests"
+        actions={
+          <>
+            <Button variant="secondary" icon={RefreshCw} onClick={loadData}>
+              Refresh
+            </Button>
+            <Button
+              variant="warning"
+              icon={Plus}
+              onClick={() => setShowReportModal(true)}>
+              Report Maintenance
+            </Button>
+          </>
+        }
+      />
 
-      {/* Error State */}
       {error && <ErrorState message={error} onRetry={loadData} />}
 
       {/* Stats Cards */}
       <StatusCards maintenanceRequests={maintenanceRequests} />
 
       {/* View Toggle */}
-      <ViewToggle currentView={currentView} setCurrentView={setCurrentView} />
+      <div className="mb-6">
+        <ViewToggle currentView={currentView} setCurrentView={setCurrentView} />
+      </div>
 
       {/* Filters */}
       <FilterBar
         filters={filters}
         onFilterChange={handleFilterChange}
         onClearFilters={handleClearFilters}
+        filterConfig={filterConfig}
       />
 
       {/* Content */}
@@ -265,11 +272,13 @@ const Maintenance = () => {
           onDateClick={handleDateClick}
         />
       ) : (
-        <ListView
-          requests={filteredRequests}
-          equipmentMap={equipmentMap}
-          onUpdateStatus={handleUpdateStatus}
-        />
+        <div className="bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+          <ListView
+            requests={filteredRequests}
+            equipmentMap={equipmentMap}
+            onUpdateStatus={handleUpdateStatus}
+          />
+        </div>
       )}
 
       {/* Modals */}

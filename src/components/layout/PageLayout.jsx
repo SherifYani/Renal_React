@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 
 const PageLayout = ({ children }) => {
   return (
-    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-950">
+    <div className="flex min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       {/* Sidebar */}
       <Sidebar />
 

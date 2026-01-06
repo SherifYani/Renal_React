@@ -1,90 +1,67 @@
-// components/equipment/EquipmentList.jsx
-import { useState, useEffect } from "react";
-import {
-  getEquipment,
-  deleteEquipment,
-} from "../../services/equipment.service";
+import React from "react";
+import { Search } from "lucide-react";
 import EquipmentCard from "./EquipmentCard";
+import Button from "../common/Button";
+import ErrorState from "../common/ErrorState";
+const EquipmentList = ({
+  filteredEquipment,
+  equipment,
+  error,
+  onDelete,
+  onEdit,
+  onAddClick,
+  filters,
+}) => {
+  const { searchTerm } = filters;
 
-const EquipmentList = () => {
-  const [equipment, setEquipment] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    loadEquipment();
-  }, []);
-
-  const loadEquipment = async () => {
-    try {
-      setLoading(true);
-      const data = await getEquipment();
-      setEquipment(data);
-    } catch (err) {
-      setError(err.message);
-      console.error(err);
-    } 
-  };
-
-  const handleDelete = (id) => {
-    if (window.confirm("Are you sure you want to delete this equipment?")) {
-      try {
-        deleteEquipment(id);
-        // Remove from local state
-        setEquipment(equipment.filter((item) => item.id !== id));
-      } catch (err) {
-        alert("Failed to delete equipment");
-        console.error("Error deleting equipment:", err);
-      }
-    }
-  };
-
-  if (loading) {
+  if (filteredEquipment.length === 0) {
     return (
-      <div className="flex justify-center items-center h-64">
-        <div className="text-lg">Loading equipment...</div>
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-        Error: {error}
+      <div className="text-center py-12">
+        <Search className="w-12 h-12 text-gray-400 dark:text-gray-600 mx-auto mb-4" />
+        <h3 className="text-lg font-semibold text-gray-700 dark:text-gray-300 mb-2">
+          No equipment found
+        </h3>
+        <p className="text-gray-500 dark:text-gray-400 mb-4">
+          {searchTerm
+            ? "Try adjusting your search or filters"
+            : "No equipment available in the system"}
+        </p>
+        <Button variant="primary" onClick={onAddClick}>
+          Add First Equipment
+        </Button>
       </div>
     );
   }
 
   return (
-    <div className="p-6">
+    <div className="mb-8">
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-2xl font-bold">Medical Equipment</h2>
-        <button
-          onClick={() => {
-            /* Open add equipment form */
-          }}
-          className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
-          Add Equipment
-        </button>
+        <div>
+          <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+            Equipment List
+          </h2>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
+            Showing {filteredEquipment.length} of {equipment.length} equipment
+          </p>
+        </div>
       </div>
 
+      {error && (
+        <div className="mb-4">
+          <ErrorState message={error} compact />
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {equipment.map((item) => (
+        {filteredEquipment.map((item) => (
           <EquipmentCard
             key={item.id}
             equipment={item}
-            onDelete={() => handleDelete(item.id)}
+            onDelete={onDelete}
+            onEdit={onEdit}
           />
         ))}
       </div>
-
-      {equipment.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-gray-500">
-            No equipment found. Add some equipment to get started.
-          </p>
-        </div>
-      )}
     </div>
   );
 };
