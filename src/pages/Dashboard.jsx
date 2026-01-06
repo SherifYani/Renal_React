@@ -50,9 +50,6 @@ const Dashboard = () => {
     try {
       setLoading(true);
       setError(null);
-
-      console.log("Loading dashboard data...");
-
       let equipmentData = [];
       try {
         equipmentData = await getEquipment();
@@ -106,11 +103,10 @@ const Dashboard = () => {
         activeReservations: reservations.length,
         maintenanceDue: maintenanceDue,
       });
+      setLoading(false);
     } catch (err) {
       console.error("Unexpected error in loadDashboardData:", err);
       setError(err.message || "Failed to load dashboard data");
-    } finally {
-      setLoading(false);
     }
   };
 

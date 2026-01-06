@@ -46,11 +46,10 @@ const Reservations = () => {
       setReservations(reservationsData);
       setEquipment(equipmentData);
       setFilteredReservations(reservationsData);
+      setLoading(false);
     } catch (err) {
       console.error("Error loading data:", err);
       setError("Failed to load data. Please try again.");
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -61,8 +60,7 @@ const Reservations = () => {
     if (searchTerm) {
       filtered = filtered.filter(
         (res) =>
-          res.purpose.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          res.equipmentId.toString().includes(searchTerm)
+          res.purpose.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 

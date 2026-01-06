@@ -5,7 +5,7 @@ export const maintenanceService = {
   // Get all maintenance requests
   async getAll() {
     try {
-      const response = await api.get("/maintenance"); // Fixed endpoint
+      const response = await api.get("/maintenance");
       return response;
     } catch (error) {
       console.error("Error fetching maintenance requests:", error);

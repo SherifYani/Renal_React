@@ -103,11 +103,11 @@ function Sidebar() {
 
       {/* Collapsed State */}
       <div
-        className={`min-h-screen transition-all duration-300 ${
+        className={`min-h-full transition-all duration-300 ${
           toggleMenu ? "w-16" : "w-0"
         }`}>
         {toggleMenu && (
-          <div className="w-16 min-h-screen bg-gradient-to-b from-blue-900 to-blue-800 dark:from-blue-950 dark:to-blue-900 flex flex-col items-center py-5">
+          <div className="w-16 min-h-full bg-gradient-to-b from-blue-900 to-blue-800 dark:from-blue-950 dark:to-blue-900 flex flex-col items-center py-5">
             <button
               type="button"
               onClick={() => setToggleMenu(!toggleMenu)}

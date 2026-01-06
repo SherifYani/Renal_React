@@ -43,11 +43,10 @@ const ScheduleReservationModal = ({ isOpen, onClose, onSuccess }) => {
       const equipmentData = await getEquipment();
       const available = equipmentData.filter((e) => e.status === "available");
       setAvailableEquipment(available);
+      setLoadingEquipment(false);
     } catch (err) {
       console.error("Error loading equipment:", err);
       setError("Failed to load equipment list");
-    } finally {
-      setLoadingEquipment(false);
     }
   };
 

@@ -36,6 +36,9 @@ import {
   AlertTriangle,
   DollarSign,
 } from "lucide-react";
+import { getEquipment } from "../services/equipment.service";
+import { getMaintenanceRequests } from "../services/maintenance.service";
+import { getAnalytics } from "../services/analytics.service";
 
 // Custom Tooltip components with dark theme support
 const CustomTooltip = ({
@@ -128,8 +131,11 @@ const Analytics = () => {
       // Fetch all data from JSON Server
       const [equipmentRes, maintenanceRes, analyticsRes] = await Promise.all([
         fetch("http://localhost:3001/equipment"),
+        // getEquipment(),
         fetch("http://localhost:3001/maintenance"),
+        // getMaintenanceRequests(),
         fetch("http://localhost:3001/analytics"),
+        // getAnalytics(),
       ]);
 
       const equipmentData = await equipmentRes.json();
@@ -139,10 +145,9 @@ const Analytics = () => {
       setEquipment(Array.isArray(equipmentData) ? equipmentData : []);
       setMaintenance(Array.isArray(maintenanceData) ? maintenanceData : []);
       setAnalyticsData(analytics);
+      setLoading(false);
     } catch (err) {
       console.error("Error loading analytics data:", err);
-    } finally {
-      setLoading(false);
     }
   };
 

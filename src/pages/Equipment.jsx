@@ -46,11 +46,10 @@ const Equipment = () => {
       const data = await getEquipment();
       setEquipment(data);
       setFilteredEquipment(data);
+      setLoading(false);
     } catch (err) {
       console.error("Error loading equipment:", err);
       setError("Failed to load equipment data");
-    } finally {
-      setLoading(false);
     }
   };
 

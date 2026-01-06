@@ -1,6 +1,6 @@
 
 import { Bell } from "lucide-react";
-import ThemeToggle from "../ThemeToggle";
+import ThemeToggle from "../common/ThemeToggle";
 
 const Navbar = () => {
   return (

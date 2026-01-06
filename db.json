@@ -202,7 +202,7 @@
       "status": "available",
       "department": "IT",
       "purchaseDate": "2023-04-18",
-      "nextMaintenance": "2025-03-01",
+      "nextMaintenance": "2026-04-06",
       "utilizationRate": 99,
       "serialNumber": "PACS-2023-180",
       "model": "VNA Server Pro",
@@ -256,16 +256,6 @@
       "notes": "For patient transfer and mobility"
     },
     {
-      "id": "76d2",
-      "name": "Tool 1",
-      "type": "laboratory",
-      "status": "maintenance",
-      "department": "Laboratory",
-      "purchaseDate": "2025-12-28",
-      "nextMaintenance": "2025-12-27",
-      "utilizationRate": 10
-    },
-    {
       "id": "ef35",
       "name": "no name",
       "type": "imaging",
@@ -274,16 +264,6 @@
       "purchaseDate": "2025-12-18",
       "nextMaintenance": "2025-12-27",
       "utilizationRate": 33
-    },
-    {
-      "id": "7b75",
-      "name": "uuuuu",
-      "type": "monitoring",
-      "status": "available",
-      "department": "Surgery",
-      "purchaseDate": "2025-12-30",
-      "nextMaintenance": "2026-05-19",
-      "utilizationRate": 10
     }
   ],
   "reservations": [
@@ -352,30 +332,6 @@
       "status": "confirmed"
     },
     {
-      "id": "hk0j",
-      "equipmentId": "i9j0",
-      "startTime": "2025-12-29T14:00:00.000Z",
-      "endTime": "2025-12-29T15:00:00.000Z",
-      "purpose": "Pre-operative cardiac assessment",
-      "status": "pending"
-    },
-    {
-      "id": "313a",
-      "equipmentId": "q7r8",
-      "startTime": "2025-12-27T23:45:00.000Z",
-      "endTime": "2025-12-28T01:45:00.000Z",
-      "purpose": "......",
-      "status": "pending"
-    },
-    {
-      "id": "6155",
-      "equipmentId": null,
-      "startTime": "2025-12-15T23:45:00.000Z",
-      "endTime": "2025-12-16T01:45:00.000Z",
-      "purpose": "xxxx",
-      "status": "pending"
-    },
-    {
       "id": "e0a3",
       "equipmentId": "ef35",
       "startTime": "2025-12-23T03:06:00.000Z",
@@ -390,6 +346,22 @@
       "endTime": "2025-12-28T08:20:00.000Z",
       "purpose": "mmmm",
       "status": "pending"
+    },
+    {
+      "id": "ad52",
+      "equipmentId": "3c40",
+      "startTime": "2025-12-28T09:18:00.000Z",
+      "endTime": "2025-12-28T11:18:00.000Z",
+      "purpose": "33",
+      "status": "pending"
+    },
+    {
+      "id": "9187",
+      "equipmentId": null,
+      "startTime": "2025-12-01T09:18:00.000Z",
+      "endTime": "2025-12-01T11:18:00.000Z",
+      "purpose": "22",
+      "status": "pending"
     }
   ],
   "maintenance": [
@@ -400,7 +372,7 @@
       "description": "Fluid pump malfunction - intermittent pressure drops during dialysis cycles. Requires pump replacement.",
       "priority": "high",
       "dateReported": "2025-12-25T10:30:00.000Z",
-      "status": "in_progress",
+      "status": "completed",
       "reportedBy": "Dr. Johnson",
       "assignedTo": "Tech Team A",
       "estimatedCompletion": "2025-12-28T17:00:00.000Z",
@@ -649,12 +621,12 @@
     },
     {
       "id": "272f",
-      "equipmentId": "76d2",
+      "equipmentId": null,
       "issueType": "emergency",
       "description": "This Maintenance for new Equipment",
       "priority": "low",
       "dateReported": "2025-12-27T05:02:17.452Z",
-      "status": "reported",
+      "status": "completed",
       "reportedBy": "Admin"
     },
     {
@@ -664,7 +636,17 @@
       "description": "ooooooo",
       "priority": "low",
       "dateReported": "2025-12-27T05:07:28.450Z",
-      "status": "reported",
+      "status": "completed",
+      "reportedBy": "Admin"
+    },
+    {
+      "id": "608b",
+      "equipmentId": "u1v2",
+      "issueType": "calibration",
+      "description": "Ahmed",
+      "priority": "low",
+      "dateReported": "2026-01-06T09:21:28.058Z",
+      "status": "completed",
       "reportedBy": "Admin"
     }
   ],

@@ -33,11 +33,10 @@ const ReportMaintenanceModal = ({ isOpen, onClose, onSuccess }) => {
     try {
       const equipmentData = await getEquipment();
       setAvailableEquipment(equipmentData);
+      setLoadingEquipment(false);
     } catch (err) {
       console.error("Error loading equipment:", err);
       setError("Failed to load equipment list");
-    } finally {
-      setLoadingEquipment(false);
     }
   };
 
@@ -75,11 +74,10 @@ const ReportMaintenanceModal = ({ isOpen, onClose, onSuccess }) => {
 
       onSuccess();
       onClose();
+      setSubmitting(false);
     } catch (err) {
       console.error("Error reporting maintenance:", err);
       setError("Failed to report maintenance. Please try again.");
-    } finally {
-      setSubmitting(false);
     }
   };
 
