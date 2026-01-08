@@ -39,6 +39,7 @@ import {
 import { getEquipment } from "../services/equipment.service";
 import { getMaintenanceRequests } from "../services/maintenance.service";
 import { getAnalytics } from "../services/analytics.service";
+import LoadingState from "../components/common/LoadingState";
 
 // Custom Tooltip components with dark theme support
 const CustomTooltip = ({
@@ -177,14 +178,6 @@ const Analytics = () => {
         color: "#f59e0b",
         percent:
           statusData.maintenance /
-          (statusData.available + statusData.in_use + statusData.maintenance),
-      },
-      {
-        name: "Reserved",
-        value: statusData.reserved || 0,
-        color: "#8b5cf6",
-        percent:
-          (statusData.reserved || 0) /
           (statusData.available + statusData.in_use + statusData.maintenance),
       },
     ];
@@ -342,18 +335,9 @@ const Analytics = () => {
     linkElement.setAttribute("download", exportFileDefaultName);
     linkElement.click();
   };
-
+  // Loading state
   if (loading) {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-        <div className="flex flex-col items-center">
-          <RefreshCw className="w-8 h-8 animate-spin text-blue-600 dark:text-blue-400 mb-4" />
-          <div className="text-lg text-gray-700 dark:text-blue-200">
-            Loading analytics data...
-          </div>
-        </div>
-      </div>
-    );
+    return <LoadingState message="Loading analytics data..." />;
   }
 
   return (

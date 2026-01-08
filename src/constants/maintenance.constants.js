@@ -48,14 +48,12 @@ export const STATS_COLORS = {
 };
 
 export const STATUS_OPTIONS = [
-  { value: "all", label: "All Status" },
   { value: "reported", label: "Reported" },
   { value: "in_progress", label: "In Progress" },
   { value: "completed", label: "Completed" },
 ];
 
 export const PRIORITY_OPTIONS = [
-  { value: "all", label: "All Priorities" },
   { value: "low", label: "Low" },
   { value: "medium", label: "Medium" },
   { value: "high", label: "High" },

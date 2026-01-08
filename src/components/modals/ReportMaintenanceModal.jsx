@@ -9,6 +9,8 @@ const ReportMaintenanceModal = ({ isOpen, onClose, onSuccess }) => {
     issueType: "routine",
     description: "",
     priority: "medium",
+    dateReported: "",
+    dateCompleted: "",
   });
 
   const [availableEquipment, setAvailableEquipment] = useState([]);
@@ -24,6 +26,8 @@ const ReportMaintenanceModal = ({ isOpen, onClose, onSuccess }) => {
         issueType: "routine",
         description: "",
         priority: "medium",
+        dateReported: "",
+        dateCompleted: "",
       });
     }
   }, [isOpen]);
@@ -44,6 +48,11 @@ const ReportMaintenanceModal = ({ isOpen, onClose, onSuccess }) => {
     e.preventDefault();
     setSubmitting(true);
     setError("");
+
+    if (new Date(formData.dateCompleted) <= new Date(formData.dateReported)) {
+      setError("End time must be after start time");
+      return;
+    }
 
     try {
       // Create maintenance request using the service
@@ -175,6 +184,40 @@ const ReportMaintenanceModal = ({ isOpen, onClose, onSuccess }) => {
                     <option value="high">High</option>
                     <option value="urgent">Urgent</option>
                   </select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
+                    Start Date & Time *
+                  </label>
+                  <input
+                    type="datetime-local"
+                    required
+                    value={formData.dateReported}
+                    onChange={(e) =>
+                      setFormData({ ...formData, dateReported: e.target.value })
+                    }
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent transition-colors duration-200"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
+                    End Date & Time *
+                  </label>
+                  <input
+                    type="datetime-local"
+                    required
+                    value={formData.dateCompleted}
+                    onChange={(e) =>
+                      setFormData({
+                        ...formData,
+                        dateCompleted: e.target.value,
+                      })
+                    }
+                    className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent transition-colors duration-200"
+                  />
                 </div>
               </div>
 

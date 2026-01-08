@@ -58,9 +58,10 @@ const Reservations = () => {
 
     // Search filter
     if (searchTerm) {
-      filtered = filtered.filter(
-        (res) =>
-          res.purpose.toLowerCase().includes(searchTerm.toLowerCase())
+      filtered = filtered.filter((res) =>
+        getEquipmentName(res.equipmentId)
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
       );
     }
 
@@ -134,7 +135,7 @@ const Reservations = () => {
   };
 
   const getEquipmentName = (equipmentId) => {
-    const foundEquipment = equipment.find((e) => e.id == equipmentId);
+    const foundEquipment = equipment.find((e) => e.id === equipmentId);
     return foundEquipment ? foundEquipment.name : `Equipment #${equipmentId}`;
   };
 
@@ -215,7 +216,7 @@ const Reservations = () => {
 
       {/* Filters */}
       <div className="bg-white dark:bg-gradient-to-br dark:from-gray-800 dark:to-gray-900 rounded-xl border border-gray-200 dark:border-gray-700/50 p-4 mb-8">
-        <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex md:flex-row gap-4">
           <div className="flex-1">
             <div className="relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
@@ -229,7 +230,7 @@ const Reservations = () => {
             </div>
           </div>
 
-          <div className="flex flex-col md:flex-row gap-3">
+          <div className="flex md:flex-row gap-3">
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
@@ -237,16 +238,17 @@ const Reservations = () => {
               <option value="all">All Status</option>
               <option value="pending">Pending</option>
               <option value="confirmed">Confirmed</option>
-              <option value="cancelled">Cancelled</option>
-              <option value="completed">Completed</option>
             </select>
 
-            <input
-              type="date"
-              value={dateFilter}
-              onChange={(e) => setDateFilter(e.target.value)}
-              className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
-            />
+            <div className="relative">
+              <input
+                type="date"
+                value={dateFilter}
+                onChange={(e) => setDateFilter(e.target.value)}
+                className="date-input px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 w-full"
+              />
+              <Calendar className="absolute right-3 ml-[10px] top-1/2 transform -translate-y-1/2 w-5 h-5 pointer-events-none text-gray-400 dark:text-gray-200" />
+            </div>
 
             <button
               onClick={() => {

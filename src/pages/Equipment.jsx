@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { Download, Plus } from "lucide-react";
 import { getEquipment, deleteEquipment } from "../services/equipment.service";
 import AddEquipmentModal from "../components/modals/AddEquipmentModal";
@@ -7,14 +7,12 @@ import SuccessNotification from "../components/common/SuccessNotification";
 import LoadingState from "../components/common/LoadingState";
 import ErrorState from "../components/common/ErrorState";
 import Button from "../components/common/Button";
-import PageLayout from "../components/layout/PageLayout";
 import PageHeader from "../components/layout/PageHeader";
-import EquipmentCard from "../components/equipment/EquipmentCard";
 import EquipmentList from "../components/equipment/EquipmentList";
-import EquipmentStatusBadge from "../components/equipment/EquipmentStatusBadge";
 import FilterBar from "../components/maintenance/FilterBar";
 import { getUniqueValues } from "../utils/equipment.utils";
 import { STATUS_OPTIONS } from "../constants/equipment.constants";
+import * as XLSX from "xlsx";
 
 const Equipment = () => {
   const [equipment, setEquipment] = useState([]);
@@ -148,6 +146,24 @@ const Equipment = () => {
     });
   }, [equipment, filters]);
 
+  // handle the export to xlsx on the filtered equipments
+
+  const handleExportXlSX = useCallback((data, filename = "equipment.xlsx") => {
+    try {
+      if (!data || data.length === 0) {
+        console.warn("No data to export");
+        return;
+      }
+
+      const ws = XLSX.utils.json_to_sheet(data);
+      const wb = XLSX.utils.book_new();
+      XLSX.utils.book_append_sheet(wb, ws, "Equipment List");
+      XLSX.writeFile(wb, filename);
+    } catch (error) {
+      setError("Failed to export Excel file. Please try again.");
+    }
+  }, []);
+
   // Filter configuration for FilterBar
   const filterConfig = useMemo(
     () => ({
@@ -191,7 +207,6 @@ const Equipment = () => {
   if (loading) {
     return <LoadingState message="Loading equipment data..." />;
   }
-
   return (
     <>
       <SuccessNotification
@@ -204,9 +219,14 @@ const Equipment = () => {
         description="Manage all medical equipment in the system"
         actions={
           <>
-            <Button variant="secondary" icon={Download}>
-              Export
+            <Button
+              variant="secondary"
+              icon={Download}
+              disabled={filteredEquipment.length === 0 || loading}
+              onClick={() => handleExportXlSX(filteredEquipment)}>
+              {loading ? "Loading..." : `Export (${filteredEquipment.length})`}
             </Button>
+
             <Button
               variant="primary"
               icon={Plus}

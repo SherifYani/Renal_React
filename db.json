@@ -19,10 +19,10 @@
       "id": "fc19",
       "name": "Ultrasound Scanner",
       "type": "imaging",
-      "status": "in_use",
+      "status": "maintenance",
       "department": "Radiology",
       "purchaseDate": "2023-04-05",
-      "nextMaintenance": "2025-12-20",
+      "nextMaintenance": "2026-01-08",
       "utilizationRate": 85,
       "serialNumber": "US-2023-012",
       "model": "SonoView 5",
@@ -94,10 +94,10 @@
       "id": "e5f6",
       "name": "Defibrillator LifePak 15",
       "type": "emergency",
-      "status": "available",
+      "status": "maintenance",
       "department": "Emergency",
       "purchaseDate": "2023-07-14",
-      "nextMaintenance": "2025-11-30",
+      "nextMaintenance": "2026-01-06",
       "utilizationRate": 45,
       "serialNumber": "DEF-2023-089",
       "model": "LifePak 15",
@@ -184,10 +184,10 @@
       "id": "s9t0",
       "name": "NICU Incubator",
       "type": "neonatal",
-      "status": "in_use",
+      "status": "maintenance",
       "department": "NICU",
       "purchaseDate": "2023-05-30",
-      "nextMaintenance": "2025-12-28",
+      "nextMaintenance": "2026-01-06",
       "utilizationRate": 85,
       "serialNumber": "INC-2023-169",
       "model": "Giraffe OmniBed",
@@ -199,10 +199,10 @@
       "id": "u1v2",
       "name": "PACS Server",
       "type": "it",
-      "status": "available",
+      "status": "maintenance",
       "department": "IT",
       "purchaseDate": "2023-04-18",
-      "nextMaintenance": "2026-04-06",
+      "nextMaintenance": "2026-01-08",
       "utilizationRate": 99,
       "serialNumber": "PACS-2023-180",
       "model": "VNA Server Pro",
@@ -268,14 +268,6 @@
   ],
   "reservations": [
     {
-      "id": "51ec",
-      "equipmentId": null,
-      "startTime": "2025-12-27T09:00:00.000Z",
-      "endTime": "2025-12-27T11:00:00.000Z",
-      "purpose": "Scheduled patient dialysis session",
-      "status": "confirmed"
-    },
-    {
       "id": "8ac3",
       "equipmentId": "3c40",
       "startTime": "2025-12-26T10:30:00.000Z",
@@ -297,14 +289,6 @@
       "startTime": "2025-12-28T09:00:00.000Z",
       "endTime": "2025-12-28T11:00:00.000Z",
       "purpose": "Chest CT for pulmonary embolism",
-      "status": "confirmed"
-    },
-    {
-      "id": "dg6f",
-      "equipmentId": null,
-      "startTime": "2025-12-29T07:30:00.000Z",
-      "endTime": "2025-12-29T12:00:00.000Z",
-      "purpose": "General surgery - appendectomy",
       "status": "confirmed"
     },
     {
@@ -356,11 +340,11 @@
       "status": "pending"
     },
     {
-      "id": "9187",
-      "equipmentId": null,
-      "startTime": "2025-12-01T09:18:00.000Z",
-      "endTime": "2025-12-01T11:18:00.000Z",
-      "purpose": "22",
+      "id": "b8e7",
+      "equipmentId": "i9j0",
+      "startTime": "2026-01-08T05:56:00.000Z",
+      "endTime": "2026-01-08T07:56:00.000Z",
+      "purpose": "ww",
       "status": "pending"
     }
   ],
@@ -376,10 +360,7 @@
       "reportedBy": "Dr. Johnson",
       "assignedTo": "Tech Team A",
       "estimatedCompletion": "2025-12-28T17:00:00.000Z",
-      "partsNeeded": [
-        "Fluid Pump Assembly",
-        "Pressure Sensor"
-      ]
+      "partsNeeded": ["Fluid Pump Assembly", "Pressure Sensor"]
     },
     {
       "id": "e232",
@@ -392,9 +373,7 @@
       "reportedBy": "Radiology Technician",
       "assignedTo": "Calibration Team",
       "estimatedCompletion": "2025-12-29T12:00:00.000Z",
-      "partsNeeded": [
-        "Calibration Kit"
-      ]
+      "partsNeeded": ["Calibration Kit"]
     },
     {
       "id": "e9a7",
@@ -407,10 +386,7 @@
       "reportedBy": "Maintenance Scheduler",
       "assignedTo": "Tech Team B",
       "dateCompleted": "2025-12-22T16:45:00.000Z",
-      "partsNeeded": [
-        "Air Filter",
-        "Battery Pack"
-      ],
+      "partsNeeded": ["Air Filter", "Battery Pack"],
       "cost": 450,
       "notes": "Equipment passed all tests, ready for use."
     },
@@ -425,9 +401,7 @@
       "reportedBy": "Nurse Smith",
       "assignedTo": "Safety Team",
       "estimatedCompletion": "2025-12-27T18:00:00.000Z",
-      "partsNeeded": [
-        "Power Supply Unit"
-      ]
+      "partsNeeded": ["Power Supply Unit"]
     },
     {
       "id": "d4f6",
@@ -440,10 +414,7 @@
       "reportedBy": "Dr. Williams",
       "assignedTo": "Tech Team C",
       "estimatedCompletion": "2025-12-27T14:00:00.000Z",
-      "partsNeeded": [
-        "LCD Screen",
-        "Display Cable"
-      ]
+      "partsNeeded": ["LCD Screen", "Display Cable"]
     },
     {
       "id": "a7e3",
@@ -456,10 +427,7 @@
       "reportedBy": "ICU Nurse",
       "assignedTo": "Emergency Response",
       "estimatedCompletion": "2025-12-26T20:00:00.000Z",
-      "partsNeeded": [
-        "Stepper Motor",
-        "Control Board"
-      ]
+      "partsNeeded": ["Stepper Motor", "Control Board"]
     },
     {
       "id": "m2n3",
@@ -472,10 +440,7 @@
       "reportedBy": "Radiologist",
       "assignedTo": "MRI Specialist Team",
       "estimatedCompletion": "2025-12-30T10:00:00.000Z",
-      "partsNeeded": [
-        "Gradient Coil",
-        "Shim Kit"
-      ]
+      "partsNeeded": ["Gradient Coil", "Shim Kit"]
     },
     {
       "id": "p4q5",
@@ -488,10 +453,7 @@
       "reportedBy": "Lab Technician",
       "assignedTo": "Lab Equipment Team",
       "estimatedCompletion": "2025-12-27T15:00:00.000Z",
-      "partsNeeded": [
-        "Sample Probe",
-        "Reagent Pack"
-      ]
+      "partsNeeded": ["Sample Probe", "Reagent Pack"]
     },
     {
       "id": "r6s7",
@@ -504,10 +466,7 @@
       "reportedBy": "Dialysis Nurse",
       "assignedTo": "Water Treatment Team",
       "estimatedCompletion": "2025-12-27T12:00:00.000Z",
-      "partsNeeded": [
-        "RO Membrane",
-        "Conductivity Sensor"
-      ]
+      "partsNeeded": ["RO Membrane", "Conductivity Sensor"]
     },
     {
       "id": "t8u9",
@@ -520,10 +479,7 @@
       "reportedBy": "Maintenance Scheduler",
       "assignedTo": "CT Maintenance Team",
       "dateCompleted": "2025-12-24T18:30:00.000Z",
-      "partsNeeded": [
-        "X-ray Tube Filter",
-        "Calibration Phantom"
-      ],
+      "partsNeeded": ["X-ray Tube Filter", "Calibration Phantom"],
       "cost": 1200,
       "notes": "CT scanner operating within specifications"
     },
@@ -538,10 +494,7 @@
       "reportedBy": "Anesthesiologist",
       "assignedTo": "Anesthesia Team",
       "estimatedCompletion": "2025-12-28T09:00:00.000Z",
-      "partsNeeded": [
-        "Sevoflurane Vaporizer",
-        "Pressure Regulator"
-      ]
+      "partsNeeded": ["Sevoflurane Vaporizer", "Pressure Regulator"]
     },
     {
       "id": "x2y3",
@@ -554,10 +507,7 @@
       "reportedBy": "Surgical Technician",
       "assignedTo": "Surgical Equipment Team",
       "estimatedCompletion": "2025-01-03T14:00:00.000Z",
-      "partsNeeded": [
-        "Positioning Sensor",
-        "Encoder Kit"
-      ]
+      "partsNeeded": ["Positioning Sensor", "Encoder Kit"]
     },
     {
       "id": "z4a5",
@@ -570,10 +520,7 @@
       "reportedBy": "Sterilization Tech",
       "assignedTo": "Sterilization Team",
       "estimatedCompletion": "2025-12-29T16:00:00.000Z",
-      "partsNeeded": [
-        "Door Gasket",
-        "Pressure Valve"
-      ]
+      "partsNeeded": ["Door Gasket", "Pressure Valve"]
     },
     {
       "id": "b6c7",
@@ -586,10 +533,7 @@
       "reportedBy": "Emergency Department",
       "assignedTo": "Emergency Equipment Team",
       "dateCompleted": "2025-12-25T10:30:00.000Z",
-      "partsNeeded": [
-        "Defibrillator Battery",
-        "Electrode Pads"
-      ],
+      "partsNeeded": ["Defibrillator Battery", "Electrode Pads"],
       "cost": 85,
       "notes": "Defibrillator ready for emergency use"
     },
@@ -604,9 +548,7 @@
       "reportedBy": "Cardiology Dept",
       "assignedTo": "IT Support Team",
       "estimatedCompletion": "2025-12-30T11:00:00.000Z",
-      "partsNeeded": [
-        "Software License"
-      ],
+      "partsNeeded": ["Software License"],
       "notes": "Update includes new arrhythmia detection algorithms"
     },
     {
@@ -647,6 +589,50 @@
       "priority": "low",
       "dateReported": "2026-01-06T09:21:28.058Z",
       "status": "completed",
+      "reportedBy": "Admin"
+    },
+    {
+      "id": "fc70",
+      "equipmentId": "e5f6",
+      "issueType": "calibration",
+      "description": "AASD",
+      "priority": "high",
+      "dateReported": "2026-01-06T23:06:55.771Z",
+      "status": "reported",
+      "reportedBy": "Admin"
+    },
+    {
+      "id": "3abe",
+      "equipmentId": "s9t0",
+      "issueType": "emergency",
+      "description": "VVV",
+      "priority": "urgent",
+      "dateReported": "2026-01-06T23:07:10.655Z",
+      "status": "reported",
+      "reportedBy": "Admin"
+    },
+    {
+      "id": "55c8",
+      "equipmentId": "u1v2",
+      "issueType": "emergency",
+      "description": "ss",
+      "priority": "low",
+      "dateReported": "2026-01-08T00:14:46.110Z",
+      "dateCompleted": "",
+      "startTime": "2026-01-30T19:15",
+      "endTime": "2026-01-04T02:12",
+      "status": "reported",
+      "reportedBy": "Admin"
+    },
+    {
+      "id": "1263",
+      "equipmentId": "fc19",
+      "issueType": "routine",
+      "description": "asdasd",
+      "priority": "medium",
+      "dateReported": "2026-01-08T00:23:30.109Z",
+      "dateCompleted": "2026-01-19T02:23",
+      "status": "reported",
       "reportedBy": "Admin"
     }
   ],
@@ -774,7 +760,7 @@
       }
     ],
     "equipmentStatus": {
-      "available": 8,
+      "available": 5,
       "in_use": 7,
       "maintenance": 5,
       "reserved": 0

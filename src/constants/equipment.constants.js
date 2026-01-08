@@ -1,9 +1,7 @@
 export const STATUS_OPTIONS = [
-  { value: "all", label: "All Status" },
   { value: "available", label: "Available" },
   { value: "in_use", label: "In Use" },
   { value: "maintenance", label: "Maintenance" },
-  { value: "reserved", label: "Reserved" },
 ];
 
 export const STATS_COLORS = {
