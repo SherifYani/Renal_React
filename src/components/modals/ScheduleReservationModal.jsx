@@ -1,7 +1,14 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { X, Clock, RefreshCw } from "lucide-react";
-import { createReservation } from "../../services/reservation.service";
-import { getEquipment } from "../../services/equipment.service";
+import {
+  createReservation,
+  getReservations,
+} from "../../services/reservation.service";
+import {
+  getEquipment,
+  getEquipmentById,
+  updateEquipment,
+} from "../../services/equipment.service";
 
 const ScheduleReservationModal = ({ isOpen, onClose, onSuccess }) => {
   const [formData, setFormData] = useState({
@@ -16,26 +23,90 @@ const ScheduleReservationModal = ({ isOpen, onClose, onSuccess }) => {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [loadingEquipment, setLoadingEquipment] = useState(false);
-
+  const [availabilityLoading, setAvailabilityLoading] = useState(false);
+  const [availabilityMessage, setAvailabilityMessage] = useState("");
   useEffect(() => {
     if (isOpen) {
       loadAvailableEquipment();
 
-      // Set default times
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      const endTime = new Date(tomorrow);
-      endTime.setHours(tomorrow.getHours() + 2);
+      const now = new Date();
+      // Round up to nearest 15 minutes
+      const roundedMinutes = Math.ceil(now.getMinutes() / 15) * 15;
+      const startTime = new Date(now);
+      startTime.setMinutes(roundedMinutes);
+      startTime.setSeconds(0);
+      startTime.setMilliseconds(0);
+
+      const endTime = new Date(startTime);
+      endTime.setHours(endTime.getHours() + 2);
 
       setFormData({
         equipmentId: "",
-        startTime: tomorrow.toISOString().slice(0, 16),
+        startTime: startTime.toISOString().slice(0, 16),
         endTime: endTime.toISOString().slice(0, 16),
         purpose: "",
         status: "pending",
       });
+      setAvailabilityMessage("");
     }
   }, [isOpen]);
+
+  // Check availability when dates or equipment change
+  useEffect(() => {
+    const checkAvailability = async () => {
+      if (!formData.equipmentId || !formData.startTime || !formData.endTime) {
+        setAvailabilityMessage("");
+        return;
+      }
+
+      setAvailabilityLoading(true);
+      try {
+        const existingReservations = await getReservations();
+
+        const conflicts = existingReservations.filter((reservation) => {
+          if (reservation.equipmentId !== formData.equipmentId) return false;
+          if (["cancelled", "completed"].includes(reservation.status))
+            return false;
+
+          const newStart = new Date(formData.startTime);
+          const newEnd = new Date(formData.endTime);
+          const existingStart = new Date(reservation.startTime);
+          const existingEnd = new Date(reservation.endTime);
+
+          return newStart < existingEnd && newEnd > existingStart;
+        });
+
+        if (conflicts.length > 0) {
+          const conflict = conflicts[0];
+          setAvailabilityMessage(
+            `Equipment is booked from ${formatTime(
+              conflict.startTime
+            )} to ${formatTime(conflict.endTime)}`
+          );
+        } else {
+          setAvailabilityMessage("Equipment is available for this time slot");
+        }
+      } catch (err) {
+        console.error("Error checking availability:", err);
+      } finally {
+        setAvailabilityLoading(false);
+      }
+    };
+
+    // Debounce the availability check
+    const debounceTimer = setTimeout(checkAvailability, 500);
+    return () => clearTimeout(debounceTimer);
+  }, [formData.equipmentId, formData.startTime, formData.endTime]);
+
+  // Add formatTime helper function inside the component
+  const formatTime = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleTimeString("en-US", {
+      hour: "2-digit",
+      minute: "2-digit",
+      hour12: true,
+    });
+  };
 
   const loadAvailableEquipment = async () => {
     setLoadingEquipment(true);
@@ -59,10 +130,45 @@ const ScheduleReservationModal = ({ isOpen, onClose, onSuccess }) => {
       return;
     }
 
+    // Validate equipment is selected
+    if (!formData.equipmentId) {
+      setError("Please select equipment");
+      return;
+    }
+
     setSubmitting(true);
     setError("");
 
     try {
+      // First, get all existing reservations to check for conflicts
+      const existingReservations = await getReservations();
+
+      // Check for time conflicts with selected equipment
+      const timeConflicts = existingReservations.filter((reservation) => {
+        // Skip if different equipment or cancelled/completed reservations
+        if (reservation.equipmentId !== formData.equipmentId) return false;
+        if (["cancelled", "completed"].includes(reservation.status))
+          return false;
+
+        const newStart = new Date(formData.startTime);
+        const newEnd = new Date(formData.endTime);
+        const existingStart = new Date(reservation.startTime);
+        const existingEnd = new Date(reservation.endTime);
+
+        // Check for overlap: new reservation overlaps with existing one
+        // Conditions for overlap: newStart < existingEnd AND newEnd > existingStart
+        return newStart < existingEnd && newEnd > existingStart;
+      });
+
+      if (timeConflicts.length > 0) {
+        setError(`Selected equipment is not available during the requested time. 
+        It has ${timeConflicts.length} conflicting reservation(s). 
+        Please choose a different time or equipment.`);
+        setSubmitting(false);
+        return;
+      }
+
+      // Create reservation if no conflicts
       const reservationData = {
         ...formData,
         startTime: new Date(formData.startTime).toISOString(),
@@ -70,6 +176,7 @@ const ScheduleReservationModal = ({ isOpen, onClose, onSuccess }) => {
       };
 
       await createReservation(reservationData);
+
       onSuccess();
       onClose();
 
@@ -83,7 +190,12 @@ const ScheduleReservationModal = ({ isOpen, onClose, onSuccess }) => {
       });
     } catch (err) {
       console.error("Error scheduling reservation:", err);
-      setError("Failed to schedule reservation. Please try again.");
+      setError(
+        err.response?.data?.message ||
+          "Failed to schedule reservation. Please try again."
+      );
+    } finally {
+      setSubmitting(false);
     }
   };
 
@@ -163,6 +275,7 @@ const ScheduleReservationModal = ({ isOpen, onClose, onSuccess }) => {
                     onChange={(e) =>
                       setFormData({ ...formData, startTime: e.target.value })
                     }
+                    min={new Date().toISOString().slice(0, 16)}
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent transition-colors duration-200"
                   />
                 </div>
@@ -177,10 +290,32 @@ const ScheduleReservationModal = ({ isOpen, onClose, onSuccess }) => {
                     onChange={(e) =>
                       setFormData({ ...formData, endTime: e.target.value })
                     }
+                    min={
+                      formData.startTime ||
+                      new Date().toISOString().slice(0, 16)
+                    }
                     className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-600 focus:border-transparent transition-colors duration-200"
                   />
                 </div>
               </div>
+
+              {availabilityLoading && (
+                <div className="flex items-center gap-2 text-sm text-blue-600 dark:text-blue-400">
+                  <RefreshCw className="w-4 h-4 animate-spin" />
+                  Checking availability...
+                </div>
+              )}
+
+              {availabilityMessage && (
+                <div
+                  className={`text-sm ${
+                    availabilityMessage.includes("✅")
+                      ? "text-green-600 dark:text-green-400"
+                      : "text-yellow-600 dark:text-yellow-400"
+                  }`}>
+                  {availabilityMessage}
+                </div>
+              )}
 
               <div>
                 <label className="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">
