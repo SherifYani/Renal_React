@@ -7,6 +7,7 @@ import {
 import ScheduleReservationModal from "../components/modals/ScheduleReservationModal";
 import SuccessNotification from "../components/common/SuccessNotification";
 import { getEquipment } from "../services/equipment.service";
+import LoadingState from "../components/common/LoadingState";
 
 const Reservations = () => {
   const [reservations, setReservations] = useState([]);
@@ -141,14 +142,7 @@ const Reservations = () => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
-        <div className="flex flex-col items-center">
-          <div className="w-8 h-8 border-4 border-blue-600 dark:border-blue-400 border-t-transparent rounded-full animate-spin mb-4"></div>
-          <div className="text-lg text-gray-700 dark:text-blue-200">
-            Loading reservations and equipment data...
-          </div>
-        </div>
-      </div>
+      <LoadingState message="Loading reservations and equipment data..." />
     );
   }
 
