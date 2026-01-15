@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { X, Wrench, RefreshCw } from "lucide-react";
 import { getEquipment } from "../../services/equipment.service";
 import { maintenanceService } from "../../services/maintenance.service";

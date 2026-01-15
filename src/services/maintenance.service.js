@@ -1,4 +1,3 @@
-// src/services/maintenance.service.js
 import api from "./api";
 
 export const maintenanceService = {

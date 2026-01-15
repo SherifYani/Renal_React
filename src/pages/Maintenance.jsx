@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { Plus, RefreshCw } from "lucide-react";
 import { getEquipment } from "../services/equipment.service";
 import ReportMaintenanceModal from "../components/modals/ReportMaintenanceModal";
@@ -6,7 +6,6 @@ import SuccessNotification from "../components/common/SuccessNotification";
 import LoadingState from "../components/common/LoadingState";
 import ErrorState from "../components/common/ErrorState";
 import Button from "../components/common/Button";
-import PageLayout from "../components/layout/PageLayout";
 import PageHeader from "../components/layout/PageHeader";
 import FilterBar from "../components/maintenance/FilterBar";
 import ListView from "../components/maintenance/ListView";

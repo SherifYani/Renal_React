@@ -1,4 +1,3 @@
-import React from "react";
 import { Search } from "lucide-react";
 import EquipmentCard from "./EquipmentCard";
 import Button from "../common/Button";

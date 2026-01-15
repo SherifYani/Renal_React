@@ -1,4 +1,3 @@
-import React from "react";
 import { STATS_COLORS } from "../../constants/maintenance.constants";
 
 const StatusCards = ({ maintenanceRequests }) => {

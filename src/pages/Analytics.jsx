@@ -1,5 +1,4 @@
-// src/pages/Analytics.jsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   BarChart,
   Bar,
@@ -36,9 +35,6 @@ import {
   AlertTriangle,
   DollarSign,
 } from "lucide-react";
-import { getEquipment } from "../services/equipment.service";
-import { getMaintenanceRequests } from "../services/maintenance.service";
-import { getAnalytics } from "../services/analytics.service";
 import LoadingState from "../components/common/LoadingState";
 
 // Custom Tooltip components with dark theme support

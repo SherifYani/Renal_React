@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { X, Plus, RefreshCw } from "lucide-react";
 import { createEquipment } from "../../services/equipment.service";
 

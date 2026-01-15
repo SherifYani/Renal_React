@@ -6,8 +6,6 @@ import {
 } from "../../services/reservation.service";
 import {
   getEquipment,
-  getEquipmentById,
-  updateEquipment,
 } from "../../services/equipment.service";
 
 const ScheduleReservationModal = ({ isOpen, onClose, onSuccess }) => {

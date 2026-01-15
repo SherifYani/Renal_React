@@ -1,5 +1,5 @@
 // pages/Dashboard.jsx
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { getEquipment } from "../services/equipment.service";
 import {
   getReservations,

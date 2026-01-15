@@ -1,4 +1,3 @@
-// api.js
 import axios from "axios";
 
 // Create axios instance for JSON Server

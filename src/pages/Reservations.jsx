@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Calendar, Clock, Search, Filter, Plus, Check, X } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calendar, Clock, Search, Plus, Check, X } from "lucide-react";
 import {
   getReservations,
   deleteReservation,

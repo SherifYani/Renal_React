@@ -1,4 +1,3 @@
-// src/services/analytics.service.js
 import api from "./api";
 
 export const analyticsService = {

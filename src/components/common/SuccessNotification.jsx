@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { Check, X } from "lucide-react";
 
 const SuccessNotification = ({ message, duration = 3000, onClose }) => {
